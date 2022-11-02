@@ -4,7 +4,7 @@ This is a common web application architecture created with terraform.
 
 ## AWS Architecture Diagram
 
-TODO
+![architecture](https://raw.githubusercontent.com/masahiro-kasatani/image/main/terraform-web/architecture.drawio.png)
 
 ## Author
 Masahiro Kasatani
