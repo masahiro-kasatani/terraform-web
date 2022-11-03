@@ -35,7 +35,7 @@ resource "aws_lb_listener" "https_blue" {
 
   protocol   = "HTTPS"
   port       = var.listener_blue.https_port
-  ssl_policy = "ELBSecurityPolicy-2016-08"
+  ssl_policy = "ELBSecurityPolicy-TLS-1-2-2017-01"
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.blue[0].arn
@@ -97,7 +97,7 @@ resource "aws_lb_listener" "https_green" {
 
   protocol   = "HTTPS"
   port       = var.listener_green.https_port
-  ssl_policy = "ELBSecurityPolicy-2016-08"
+  ssl_policy = "ELBSecurityPolicy-TLS-1-2-2017-01"
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.green[0].arn
