@@ -7,7 +7,8 @@ resource "aws_lb" "main" {
   load_balancer_type         = "application"
   subnets                    = var.subnet_ids
   security_groups            = [aws_security_group.alb.id]
-  internal                   = false
+  # tfsec:ignore:aws-elb-alb-not-public
+  internal                   = false # ignored
   enable_deletion_protection = false
 }
 
