@@ -22,6 +22,7 @@ resource "aws_autoscaling_group" "main" {
     version = aws_launch_template.main.latest_version
   }
 }
+# tfsec:ignore:aws-autoscaling-enforce-http-token-imds
 resource "aws_launch_template" "main" {
   name                   = local.name
   image_id               = var.image_id
