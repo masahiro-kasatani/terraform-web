@@ -10,6 +10,7 @@ resource "aws_lb" "main" {
   # tfsec:ignore:aws-elb-alb-not-public
   internal                   = false # ignored
   enable_deletion_protection = false
+  drop_invalid_header_fields = true
 }
 
 resource "aws_lb_listener" "http_blue" {
