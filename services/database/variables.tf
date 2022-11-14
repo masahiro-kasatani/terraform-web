@@ -19,7 +19,7 @@ variable "engine" {
 variable "backup_retention_period" {
   type        = number
   description = "バックアップを保持する日数（リードレプリカを使用する場合は 0よりも大きい値を設定する：0〜35）"
-  default     = 0
+  default     = 3
 }
 variable "preferred_backup_window" {
   type        = string
