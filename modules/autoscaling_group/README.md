@@ -20,11 +20,9 @@ No modules.
 | [aws_autoscaling_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
 | [aws_iam_instance_profile.ssm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.ec2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.custom](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_launch_template.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_caller_identity.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_iam_policy_document.custom](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.now](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
@@ -32,7 +30,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_associate_public_ip_address"></a> [associate\_public\_ip\_address](#input\_associate\_public\_ip\_address) | Public IP設定 | `bool` | `false` | no |
-| <a name="input_attach_policys"></a> [attach\_policys](#input\_attach\_policys) | StepFunctionsに適用するポリシー設定 | <pre>list(object({<br>    sid         = optional(string)<br>    effect      = string<br>    actions     = optional(list(string))<br>    not_actions = optional(list(string))<br>    resources   = list(string)<br>    principals = optional(list(object({<br>      type : string<br>      identifiers : list(string)<br>    })))<br>    not_principals = optional(list(object({<br>      type : string<br>      identifiers : list(string)<br>    })))<br>    condition = optional(list(object({<br>      test : string<br>      variable : string<br>      values : list(string)<br>    })))<br>  }))</pre> | `null` | no |
 | <a name="input_desired_capacity"></a> [desired\_capacity](#input\_desired\_capacity) | デフォルトの台数 | `number` | n/a | yes |
 | <a name="input_ebs_configs"></a> [ebs\_configs](#input\_ebs\_configs) | EBSストレージ設定 | <pre>list(object({<br>    device_name    = string<br>    volume_size_gb = number<br>    volume_type    = string<br>  }))</pre> | `null` | no |
 | <a name="input_env"></a> [env](#input\_env) | システム環境 | `string` | n/a | yes |

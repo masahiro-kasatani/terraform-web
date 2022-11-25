@@ -1,7 +1,3 @@
-locals {
-  create_policys_statements = var.attach_policys != null ? [for each in var.attach_policys : each if each != null] : null
-}
-
 ######################
 # ECS
 ######################
@@ -173,60 +169,6 @@ resource "aws_iam_role" "ecs_task" {
       },
     ]
   })
-}
-
-# ECSタスク用のポリシー
-data "aws_iam_policy_document" "ecs_task" {
-  count = local.create_policys_statements != null ? 1 : 0
-
-  dynamic "statement" {
-    for_each = local.create_policys_statements
-
-    content {
-      sid         = try(statement.value.sid, null)
-      effect      = try(statement.value.effect, null)
-      actions     = try(statement.value.actions, null)
-      not_actions = try(statement.value.not_actions, null)
-      resources   = try(statement.value.resources, null)
-
-      dynamic "principals" {
-        for_each = statement.value.principals != null ? statement.value.principals : []
-
-        content {
-          type        = principals.value.type
-          identifiers = principals.value.identifiers
-        }
-      }
-
-      dynamic "not_principals" {
-        for_each = statement.value.not_principals != null ? statement.value.not_principals : []
-
-        content {
-          type        = not_principals.value.type
-          identifiers = not_principals.value.identifiers
-        }
-      }
-
-      dynamic "condition" {
-        for_each = statement.value.condition != null ? statement.value.condition : []
-
-        content {
-          test     = condition.value.test
-          variable = condition.value.variable
-          values   = condition.value.values
-        }
-      }
-    }
-  }
-}
-
-# ECSタスク用のIAMロールにアタッチ
-resource "aws_iam_role_policy" "ecs_task" {
-  count = local.create_policys_statements != null ? 1 : 0
-
-  name   = "${var.name_prefix}-task-${var.env}"
-  role   = aws_iam_role.ecs_task.name
-  policy = data.aws_iam_policy_document.ecs_task[0].json
 }
 
 # 特定のSecrets ManagerへのGet権限ポリシーを作成

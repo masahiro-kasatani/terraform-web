@@ -24,12 +24,10 @@ No modules.
 | [aws_iam_policy.get_secrets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.ecs_task](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.ecs_task](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.get_secrets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_security_group.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_caller_identity.self](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_iam_policy_document.ecs_task](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.now](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
@@ -37,7 +35,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alb_target_group_arn"></a> [alb\_target\_group\_arn](#input\_alb\_target\_group\_arn) | ALBターゲットグループARN | `string` | `null` | no |
-| <a name="input_attach_policys"></a> [attach\_policys](#input\_attach\_policys) | ECSタスクに適用するポリシー設定 | <pre>list(object({<br>    sid         = optional(string)<br>    effect      = string<br>    actions     = optional(list(string))<br>    not_actions = optional(list(string))<br>    resources   = list(string)<br>    principals = optional(list(object({<br>      type : string<br>      identifiers : list(string)<br>    })))<br>    not_principals = optional(list(object({<br>      type : string<br>      identifiers : list(string)<br>    })))<br>    condition = optional(list(object({<br>      test : string<br>      variable : string<br>      values : list(string)<br>    })))<br>  }))</pre> | `null` | no |
 | <a name="input_connect_to_rds"></a> [connect\_to\_rds](#input\_connect\_to\_rds) | RDS に接続する場合は true | `bool` | `true` | no |
 | <a name="input_container_command"></a> [container\_command](#input\_container\_command) | ECSコンテナに渡すコマンド | `list(string)` | `null` | no |
 | <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | ECSコンテナCPUユニット数 | `number` | n/a | yes |

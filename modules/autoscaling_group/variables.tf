@@ -59,27 +59,3 @@ variable "user_data_base64" {
   description = "User Data Scriptファイル（Base64）"
   default     = null
 }
-variable "attach_policys" {
-  description = "StepFunctionsに適用するポリシー設定"
-  type = list(object({
-    sid         = optional(string)
-    effect      = string
-    actions     = optional(list(string))
-    not_actions = optional(list(string))
-    resources   = list(string)
-    principals = optional(list(object({
-      type : string
-      identifiers : list(string)
-    })))
-    not_principals = optional(list(object({
-      type : string
-      identifiers : list(string)
-    })))
-    condition = optional(list(object({
-      test : string
-      variable : string
-      values : list(string)
-    })))
-  }))
-  default = null
-}
